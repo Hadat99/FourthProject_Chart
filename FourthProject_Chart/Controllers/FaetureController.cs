@@ -2,7 +2,7 @@
 
 namespace FourthProject_Chart.Controllers
 {
-    public class FetureController : Controller
+    public class FaetureController : Controller
     {
         public IActionResult Index()
         {
