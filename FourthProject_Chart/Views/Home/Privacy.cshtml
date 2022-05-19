@@ -1,0 +1,198 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+
+    const minY = 0;
+    const stepY = 0.5;
+    const maxY = 5.5;
+    const minX = 0;
+    const stepX = 0.5;
+    const maxX = 4;
+    
+    const numOfStepBorder = 7;
+
+    const chartAreaBorder = 
+    {
+        id: 'chartAreaBorder',
+        beforeDraw(chart, args, options) 
+        {
+            const {ctx, chartArea: {left, top, width, height}} = chart;
+            ctx.save();
+
+            const heightOfBorder = height / (maxY / stepY) * numOfStepBorder;
+
+            ctx.strokeStyle = options.borderColor;
+            ctx.lineWidth = options.borderWidth;
+            ctx.setLineDash(options.borderDash || []);
+            ctx.lineDashOffset = options.borderDashOffset;
+
+            //ctx.moveTo(left, top + width)
+
+            ctx.strokeRect(left, top - heightOfBorder + height, width, heightOfBorder); //change size here 
+
+            ctx.restore();
+        }
+    };
+
+    const data = {
+        datasets: [
+            {
+                label: 'Line 1',
+                showLine: true,
+                data: [{x: 1.9, y: 0.4}, {x: 1.9, y: 4}],
+                backgroundColor: 'rgb(200, 0, 0)',
+                borderColor: 'rgba(200, 0, 0, 1)'
+            },
+            {
+                label: 'Line 2',
+                showLine: true,
+                data: [{x: 2.1, y: 0.4}, {x: 2.1, y: 4}],
+                backgroundColor: 'rgb(200, 0, 0)',
+                borderColor: 'rgba(200, 0, 0, 1)'
+            },
+            {
+                label: 'Line 3',
+                showLine: true,
+                data: [{x: 2, y: 0}, {x: 2, y: 0.4}],
+                backgroundColor: 'rgb(0, 200, 200)',
+                borderColor: 'rgba(0, 200, 200, 1)',
+                borderDash: [8,8]
+            }
+            ],
+    };
+
+
+    const config = {
+        type: 'scatter',
+        data: data,
+        options: 
+        {
+            scales: 
+            {
+                x: 
+                {
+                    type: 'linear',
+                    position: 'bottom',
+                    min: minX,
+                    max: maxX,
+                    grid:
+                    {
+                        display: false
+                    },
+                    ticks:
+                    {
+                        stepSize: stepX
+                    },
+                    title:
+                    {
+                        display: true,
+                        text: "truc x (m)"
+                    }
+                },
+                y: 
+                {
+                    type: 'linear',
+                    position: 'left',
+                    min: minY,
+                    max: maxY,
+                    grid:
+                    {
+                        borderDash: [2,2],
+                        color: "blue"
+                    },
+                    ticks:
+                    {
+                        stepSize: stepY
+                    },
+                    title:
+                    {
+                        display: true,
+                        text: "truc y (m)"
+                    }
+                }
+            },
+            plugins:
+            {
+                legend:
+                {
+                    labels: 
+                    {
+                        filter: function(legendItem, chartData)  // hidden first legend
+                        {
+                            if (legendItem.datasetIndex === 0) 
+                            {
+                                return false;
+                            }
+                        return true;
+                        },
+                        usePointStyle: true,
+                        
+                    },
+
+                    onClick(e, legendItem, legend) {
+
+                        
+                        var index = legendItem.datasetIndex;
+                        var ci = legend.chart;
+                        var alreadyHidden = (ci.getDatasetMeta(index).hidden === null) ? false : ci.getDatasetMeta(index).hidden;
+
+                        ci.data.datasets.forEach (
+                            function(e, i) 
+                            {
+                                var meta = ci.getDatasetMeta(i);
+
+                                if (i !== index) 
+                                {
+                                    if (!alreadyHidden) 
+                                    {
+                                        meta.hidden = meta.hidden === null ? !meta.hidden : null;
+                                    } else if (meta.hidden === null) 
+                                    {
+                                        meta.hidden = true;
+                                    }
+                                } 
+                                else if (i === index) 
+                                {
+                                    meta.hidden = null;
+                                }
+                            }
+                        );
+
+                        ci.update();
+                    },
+                },
+
+                chartAreaBorder:
+                {
+                    borderColor: "black",
+                    borderWidth: 2,
+                    borderDashOffset: 2,
+                    //borderDash: [5,5]
+                }
+            },
+
+            elements:
+            {
+                point:
+                {
+                    pointStyle: 'line',
+                    radius: 0
+                }
+            }
+        },
+        plugins: [chartAreaBorder]
+    };
+
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+</script>

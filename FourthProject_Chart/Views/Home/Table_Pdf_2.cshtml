@@ -1,0 +1,1151 @@
+﻿<style>
+    #heading {
+        font-size:14px;
+    }
+
+    #title {
+        font-size:20px;
+    }
+
+    td {
+        vertical-align: middle;
+        text-align: center;
+        padding: 0px !important;
+    }
+
+    .table {
+        margin-bottom: 0;
+        font-size: 12px;
+        border-right: hidden;
+        border-left: hidden;
+    }
+
+    .form-select {
+        padding: 0.2rem;
+        background-image:none;
+        text-align:center;
+        font-size: 12px;
+    }
+
+    .form-control {
+        padding: 0.2rem;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .input-group-sm>.input-group-text, .input-group-sm>.form-control {
+        padding: 0.2rem;
+        font-size: 12px;
+    }
+
+    #note1, #note2 {
+        text-align: start;
+    }
+</style>
+
+<div class="row">
+    <div id="heading" class="col-6 border border-dark">
+        <!--Heading-->
+        <div class="row">
+            <div class="col-1">  </div>
+            <div class="col-8 text-center">
+                <div id="title">
+                    <span class="border-bottom border-dark">レディーミクストコンクリート配合計画書</span>
+                </div>
+            </div>
+            <div class="col-3 text-start">
+                <div style="font-size:15px" class="border-bottom border-dark"> № </div>
+            </div>
+        </div>
+        <div class="row text-end">
+            <div class="col"> 平成  </div>
+            <div class="col-1"> 年 </div>
+            <div class="col-1"> 月 </div>
+            <div class="col-1"> 日 </div>
+        </div>
+        <div class="row text-end">
+            <div class="col"> <p></p> </div>
+        </div>
+        <div class="row">
+            <div class="col text-end">
+                <div class="border-bottom border-dark"> 殿 </div>
+            </div>
+            <div class="col text-center">
+                <div class="row"><div class="col"> 東京都江東区東雲2-13-45 </div></div>
+                <div class="row"><div class="col"> 晴海小野田レミコン株式会社 </div></div>
+                <div class="row"><div class="col"> 電話 (03)3520-0391 </div></div>
+                <div class="row"><div class="col"> FAX  (03)3520-0394 </div></div>
+                <div class="row">
+                    <div class="col">
+                        <u> 配合計画者名　　新井　博 </u>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Bang 1-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td> 工事名称 </td>
+                        <td colspan="2"> 13 </td>
+                    </tr>
+                    <tr>
+                        <td> 所在地 </td>
+                        <td colspan="2"> 15 </td>
+                    </tr>
+                    <tr>
+                        <td> 納入予定時期 </td>
+                        <td colspan="2"> 17 </td>
+                    </tr>
+                    <tr>
+                        <td style="width:30%"> 本配合の適用期間 </td>
+                        <td style="width:15%">
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>標準配合</option>
+                                <option value="1">標準配合・夏期</option>
+                                <option value="2">標準配合・冬期</option>
+                                <option value="3">修正標準配合</option>
+                                <option value="4">修正標準配合・夏期</option>
+                                <option value="5">修正標準配合・冬期</option>
+                            </select>
+                        </td>
+                        <td style="width:55%"> 3月4日～6月15日、9月22日～12月24日 </td>
+                    </tr>
+                    <tr>
+                        <td> ｺﾝｸﾘｰﾄの打込み箇所 </td>
+                        <td colspan="2"> 22 </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row text-center" style="background-color:lightgray">
+            <div class="col"> 配　　合　　の　　設　　計　　条　　件 </div>
+        </div>
+
+        <!--Table 2-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td style="width:10%" rowspan="2"> 呼び方 </td>
+                        <td style="width:16%"> コンクリートの種類による記号 </td>
+                        <td style="width:16%"> 呼び強度 </td>
+                        <td style="width:16%"> ｽﾗﾝﾌﾟ又はｽﾗﾝﾌﾟﾌﾛｰcm </td>
+                        <td style="width:16%"> 粗骨材の最大寸法mm </td>
+                        <td style="width:16%"> ｾﾒﾝﾄの種類による記号 </td>
+                    </tr>
+                    <tr>
+                        <td> 普通 </td>
+                        <td>
+                            <select class="form-select form-select-sm">
+                                <option value="18" selected>18</option>
+                                <option value="21">21</option>
+                                <option value="24">24</option>
+                                <option value="27">27</option>
+                                <option value="30">30</option>
+                                <option value="33">33</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select form-select-sm">
+                                <option value"5" selected>5</option>
+                                <option value"8">8</option>
+                                <option value"10">10</option>
+                                <option value"12">12</option>
+                                <option value"15">15</option>
+                                <option value"18">18</option>
+                                <option value"21">21</option>
+                                <option value"45">45</option>
+                                <option value"50">50</option>
+                                <option value"55">55</option>
+                                <option value"60">60</option>
+                                <option value"2.5">2.5</option>
+                                <option value"6.5">6.5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select form-select-sm">
+                                <option value="20" selected>20</option>
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="15">15</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select form-select-sm">
+                                <option value="N" selected>N</option>
+                                <option value="BB">BB</option>
+                                <option value="FB">FB</option>
+                                <option value="L">L</option>
+                                <option value="M">M</option>
+                                <option value="H">H</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Table 3-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td style="width:5%" rowspan="2"> 指定事項（必須） </td>
+                        <td style="width:24%"> セメントの種類 </td>
+                        <td style="width:24%"> 呼び方欄に記載 </td>
+                        <td style="width:24%"> 粗骨材の最大寸法 </td>
+                        <td style="width:23%"> 呼び方欄に記載 </td>
+                    </tr>
+                    <tr>
+                        <td> 骨材の種類 </td>
+                        <td> 使用材料欄に記載 </td>
+                        <td> ｱﾙｶﾘｼﾘｶ反応抑制対策の方法 </td>
+                        <td>
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>A</option>
+                                <option value="1">B</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="7"> 指定事項（任意） </td>
+                        <td> 骨材のｱﾙｶﾘｼﾘｶ反応性による区分 </td>
+                        <td> 使用材料欄に記載 </td>
+                        <td> 軽量ｺﾝｸﾘｰﾄの単位容積質量 </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">kg/m<sup>3</sup></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"> 水の区分 </td>
+                        <td rowspan="2"> 使用材料欄に記載 </td>
+                        <td> コンクリートの温度 </td>
+                        <td> 最高・最低 ℃</td>
+                    </tr>
+                    <tr>
+                        <td> 水セメント比の目標値の上限 </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 混和材料の種類及び使用量 </td>
+                        <td> 使用材料及び配合表欄に記載 </td>
+                        <td> 単位水量の目標値の上限 </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">kg/m<sup>3</sup></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 塩化物含有量 </td>
+                        <td> 0.3 kg/m<sup>3</sup> 以下 </td>
+                        <td rowspan="2"> 単位ｾﾒﾝﾄ量の目標値の下限又は目標値の上限 </td>
+                        <td rowspan="2">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">kg/m<sup>3</sup></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 呼び強度を保証する材齢 </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">日</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 空気量 </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </td>
+                        <td> 流動化後のスランプ増大量 </td>
+                        <td>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">cm</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row text-center" style="background-color:lightgray">
+            <div class="col"> 使　　　　　用　　　　　材　　　　　料 </div>
+        </div>
+
+        <!--Table 4-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td> セメント </td>
+                        <td> 生産者名 </td>
+                        <td colspan="3">
+                            <!--72 input-->
+                            <input type="text" class="form-control form-control-sm" placeholder="太平洋セメント株式会社">
+                        </td>
+                        <td> 密度 g/cm<sup>3</sup> </td>
+                        <td>
+                            <!--74 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td> Na<sub>2</sub>Oeq % </td>
+                        <td>
+                            <!--76 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:10%"> 混和材① </td>
+                        <td style="width:7%" rowspan="2"> 製品名 </td>
+                        <td style="width:20%">
+                            <!--79 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:5%" rowspan="2"> 種類 </td>
+                        <td style="width:20%">
+                            <!--81 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">膨張材</option>
+                                <option value="2">石灰石微粉末</option>
+                                <option value="3">フライアッシュ</option>
+                                <option value="4">高炉スラグ微粉末</option>
+                                <option value="5">その他</option>
+                            </select>
+                        </td>
+                        <td style="width:10%"> 密度 g/cm<sup>3</sup> </td>
+                        <td style="width:10%">
+                            <!--83 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:8%">  Na<sub>2</sub>Oeq % </td>
+                        <td style="width:10%">
+                            <!--85 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 混和材② </td>
+                        <td>
+                            <!--87 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--88 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">膨張材</option>
+                                <option value="2">石灰石微粉末</option>
+                                <option value="3">フライアッシュ</option>
+                                <option value="4">高炉スラグ微粉末</option>
+                                <option value="5">その他</option>
+                            </select>
+                        </td>
+                        <td> 密度 g/cm<sup>3</sup> </td>
+                        <td>
+                            <!--90 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td> Na<sub>2</sub>Oeq % </td>
+                        <td>
+                            <!--92 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Table 5-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td rowspan="2"> 骨材 </td>
+                        <td rowspan="2"> No. </td>
+                        <td rowspan="2"> 種　類 </td>
+                        <td rowspan="2"> 産 地 又 は 品 名 </td>
+                        <td colspan="2"> ｱﾙｶﾘｼﾘｶ反応性による区分 </td>
+                        <td rowspan="2"> 粒の大きさの範囲 </td>
+                        <td rowspan="2"> 粗粒率又は実積率 </td>
+                        <td colspan="2"> 密度 g/cm<sup>3</sup> </td>
+                        <td rowspan="2"> 微粒分量の範囲％ </td>
+                    </tr>
+                    <tr>
+                        <td> 区分 </td>
+                        <td> 試験方法 </td>
+                        <td> 絶乾 </td>
+                        <td> 表乾 </td>
+                    </tr>
+                    <tr>
+                        <td style="width:5%" rowspan="3"> 細骨材 </td>
+                        <td style="width:5%"> ① </td>
+                        <td style="width:10%">
+                            <!--109 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">石灰砕砂</option>
+                                <option value="2">砕砂</option>
+                                <option value="3">山砂</option>
+                                <option value="4">川砂</option>
+                                <option value="5">陸砂</option>
+                                <option value="6">海砂</option>
+                                <option value="7">高炉スラグ細骨材</option>
+                                <option value="8">その他</option>
+                            </select>
+                        </td>
+                        <td style="width:22%">
+                            <!--110 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:5%">
+                            <!--111 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                            </select>
+                        </td>
+                        <td style="width:18%">
+                            <!--112 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">化学法</option>
+                                <option value="2">モルタルバー法</option>
+                            </select>
+                        </td>
+                        <td style="width:10%">
+                            <!--113 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">1.2</option>
+                                <option value="2">2.5</option>
+                                <option value="3">5</option>
+                            </select>
+                        </td>
+                        <td style="width:7%">
+                            <!--114 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:5%">
+                            <!--115 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:5%">
+                            <!--116 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:8%">
+                            <!--117 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> ② </td>
+                        <td>
+                            <!--120 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">石灰砕砂</option>
+                                <option value="2">砕砂</option>
+                                <option value="3">山砂</option>
+                                <option value="4">川砂</option>
+                                <option value="5">陸砂</option>
+                                <option value="6">海砂</option>
+                                <option value="7">高炉スラグ細骨材</option>
+                                <option value="8">その他</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--121 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--122 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--123 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">化学法</option>
+                                <option value="2">モルタルバー法</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--124 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">1.2</option>
+                                <option value="2">2.5</option>
+                                <option value="3">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--125 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--126 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--127 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--128 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> ③ </td>
+                        <td>
+                            <!--130 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">石灰砕砂</option>
+                                <option value="2">砕砂</option>
+                                <option value="3">山砂</option>
+                                <option value="4">川砂</option>
+                                <option value="5">陸砂</option>
+                                <option value="6">海砂</option>
+                                <option value="7">高炉スラグ細骨材</option>
+                                <option value="8">その他</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--131 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--132 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--133 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">化学法</option>
+                                <option value="2">モルタルバー法</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--134 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">1.2</option>
+                                <option value="2">2.5</option>
+                                <option value="3">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--135 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--136 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--137 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--138 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4"> 粗骨材 </td>
+                        <td> ① </td>
+                        <td>
+                            <!--141 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">石灰砕石</option>
+                                <option value="2">砕石</option>
+                                <option value="3">山砂利</option>
+                                <option value="4">川砂利</option>
+                                <option value="5">海砂利</option>
+                                <option value="6">高炉スラグ細骨材</option>
+                                <option value="7">その他</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--142 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--143 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--144 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">化学法</option>
+                                <option value="2">モルタルバー法</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--145 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">2005</option>
+                                <option value="2">1005</option>
+                                <option value="2">2505</option>
+                                <option value="2">2510</option>
+                                <option value="2">4005</option>
+                                <option value="2">4020</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--146 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--147 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--148 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--149 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td> ② </td>
+                        <td>
+                            <!--151 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">石灰砕石</option>
+                                <option value="2">砕石</option>
+                                <option value="3">山砂利</option>
+                                <option value="4">川砂利</option>
+                                <option value="5">海砂利</option>
+                                <option value="6">高炉スラグ細骨材</option>
+                                <option value="7">その他</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--152 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--153 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--154 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">化学法</option>
+                                <option value="2">モルタルバー法</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--155 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">2005</option>
+                                <option value="2">1005</option>
+                                <option value="2">2505</option>
+                                <option value="2">2510</option>
+                                <option value="2">4005</option>
+                                <option value="2">4020</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--156 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--157 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--158 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--159 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> ③ </td>
+                        <td>
+                            <!--161 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">石灰砕石</option>
+                                <option value="2">砕石</option>
+                                <option value="3">山砂利</option>
+                                <option value="4">川砂利</option>
+                                <option value="5">海砂利</option>
+                                <option value="6">高炉スラグ細骨材</option>
+                                <option value="7">その他</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--162 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--163 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--164 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">化学法</option>
+                                <option value="2">モルタルバー法</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--165 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">2005</option>
+                                <option value="2">1005</option>
+                                <option value="2">2505</option>
+                                <option value="2">2510</option>
+                                <option value="2">4005</option>
+                                <option value="2">4020</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--166 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--167 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--168 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--169 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> ④ </td>
+                        <td>
+                            <!--171 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">石灰砕石</option>
+                                <option value="2">砕石</option>
+                                <option value="3">山砂利</option>
+                                <option value="4">川砂利</option>
+                                <option value="5">海砂利</option>
+                                <option value="6">高炉スラグ細骨材</option>
+                                <option value="7">その他</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!-- 172 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--173 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--174 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">化学法</option>
+                                <option value="2">モルタルバー法</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--175 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">2005</option>
+                                <option value="2">1005</option>
+                                <option value="2">2505</option>
+                                <option value="2">2510</option>
+                                <option value="2">4005</option>
+                                <option value="2">4020</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!-- 176 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!-- 177 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!-- 178 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!-- 179 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Table 6-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td style="width:10%"> 混和材① </td>
+                        <td style="width:10%" rowspan="3"> 製品名 </td>
+                        <td style="width:17%">
+                            <!-- 182 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:10%" rowspan="3"> 種　類 </td>
+                        <td style="width:35%">
+                            <!--184 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">AE減水剤（標準形） </option>
+                                <option value="2">AE減水剤（標準形） </option>
+                                <option value="3">AE減水剤（促進形） </option>
+                                <option value="4">高性能AE減水剤（標準形） </option>
+                                <option value="5">高性能AE減水剤（遅延形） </option>
+                                <option value="6">流動化剤（標準） </option>
+                                <option value="7">流動化剤（遅延） </option>
+                                <option value="8">AE剤 </option>
+                                <option value="9">高性能減水剤 </option>
+                                <option value="10">硬化促進剤 </option>
+                                <option value="11">収縮低減剤 </option>
+                                <option value="12">防錆剤 </option>
+                                <option value="13">その他 </option>
+                            </select>
+                        </td>
+                        <td style="width:7%" rowspan="3"> Na<sub>2</sub>Oeq％ </td>
+                        <td style="width:11%">
+                            <!--186 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 混和材② </td>
+                        <td>
+                            <!--188 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--189 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">AE減水剤（標準形） </option>
+                                <option value="2">AE減水剤（標準形） </option>
+                                <option value="3">AE減水剤（促進形） </option>
+                                <option value="4">高性能AE減水剤（標準形） </option>
+                                <option value="5">高性能AE減水剤（遅延形） </option>
+                                <option value="6">流動化剤（標準） </option>
+                                <option value="7">流動化剤（遅延） </option>
+                                <option value="8">AE剤 </option>
+                                <option value="9">高性能減水剤 </option>
+                                <option value="10">硬化促進剤 </option>
+                                <option value="11">収縮低減剤 </option>
+                                <option value="12">防錆剤 </option>
+                                <option value="13">その他 </option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--190 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 混和材③ </td>
+                        <td>
+                            <!--192 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td>
+                            <!--193 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="0" selected>-</option>
+                                <option value="1">AE減水剤（標準形） </option>
+                                <option value="2">AE減水剤（標準形） </option>
+                                <option value="3">AE減水剤（促進形） </option>
+                                <option value="4">高性能AE減水剤（標準形） </option>
+                                <option value="5">高性能AE減水剤（遅延形） </option>
+                                <option value="6">流動化剤（標準） </option>
+                                <option value="7">流動化剤（遅延） </option>
+                                <option value="8">AE剤 </option>
+                                <option value="9">高性能減水剤 </option>
+                                <option value="10">硬化促進剤 </option>
+                                <option value="11">収縮低減剤 </option>
+                                <option value="12">防錆剤 </option>
+                                <option value="13">その他 </option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--194 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Table 7-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td style="width:20%"> 細骨材の塩化物量 </td>
+                        <td style="width:12%">
+                            <!--196 input-->
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text">①</span>
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </td>
+                        <td style="width:12%">
+                            <!--197 input-->
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text">②</span>
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </td>
+                        <td style="width:10%"> 水の区分 </td>
+                        <td style="width:15%">
+                            <!--199 dropdown-->
+                            <select class="form-select form-select-sm">
+                                <option value="1" selected>上水道水</option>
+                                <option value="2">地下水</option>
+                                <option value="3">工業用水</option>
+                                <option value="4">上澄水</option>
+                                <option value="5">回収水</option>
+                                <option value="6">その他</option>
+                            </select>
+                        </td>
+                        <td style="width:15%"> 目標ｽﾗｯｼﾞ固形分率 </td>
+                        <td style="width:16%">
+                            <!--201 input-->
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 回収骨材の使用方法 </td>
+                        <td> 細　骨　材 </td>
+                        <td> － </td>
+                        <td> 粗　骨　材 </td>
+                        <td> － </td>
+                        <td colspan="2"> 安定化スラッジ水の使用の有・無 </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row text-center" style="background-color:lightgray">
+            <div class="col"> 配　合　表　㎏/m<sup>3</sup> </div>
+        </div>
+
+        <!--Table 8-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td rowspan="2"> セメント </td>
+                        <td colspan="2"> 混和材 </td>
+                        <td rowspan="2"> 水 </td>
+                        <td colspan="3"> 細　骨　材 </td>
+                        <td colspan="4"> 粗　骨　材 </td>
+                        <td colspan="3"> 混　和　剤 </td>
+                    </tr>
+                    <tr>
+                        <td> ① </td>
+                        <td> ② </td>
+                        <td> ① </td>
+                        <td> ② </td>
+                        <td> ③ </td>
+                        <td> ① </td>
+                        <td> ② </td>
+                        <td> ③ </td>
+                        <td> ④ </td>
+                        <td> ① </td>
+                        <td> ② </td>
+                        <td> ③ </td>
+                    </tr>
+                    <tr>
+                        <td style="width:9%">
+                            <!--227 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:9%">
+                            <!--228 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:9%">
+                            <!--229 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:9%">
+                            <!--230 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:6%">
+                            <!--231 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:5%">
+                            <!--232 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:5%">
+                            <!--233 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:6%">
+                            <!--234 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:6%">
+                            <!--235 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:6%">
+                            <!--236 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:6%">
+                            <!--237 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:8%">
+                            <!--238 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:8%">
+                            <!--239 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                        <td style="width:8%">
+                            <!--240 input-->
+                            <input type="text" class="form-control form-control-sm">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Table 9-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td style="width:17%"> 水セメント比 </td>
+                        <td style="width:17%">
+                            <!--242 input-->
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </td>
+                        <td style="width:17%"> 水結合材比 </td>
+                        <td style="width:13%">
+                            <!--244 input-->
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </td>
+                        <td style="width:18%"> 細骨材率 </td>
+                        <td style="width:18%">
+                            <!--246 input-->
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-sm">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Table 10-->
+        <div class="row">
+            <table class="table table-bordered border-dark">
+                <tbody>
+                    <tr>
+                        <td style="width:6%"> 備考 </td>
+                        <td style="width:47%">
+                            <textarea id="note1" class="form-control" rows="3" ></textarea>
+                        </td>
+                        <td style="width:10%"> 骨材混合比 </td>
+                        <td style="width:37%">
+                            <textarea id="note2" class="form-control" rows="3" ></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

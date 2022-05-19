@@ -1,0 +1,414 @@
+﻿@model FormModel
+
+
+<form asp-action="Form">
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col text-center">
+                @ViewBag.message
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                打込み間隔
+            </div>
+            <div class="col">
+                自由落下高さ
+            </div>
+            <div class="col">
+                打上げ方法
+            </div>
+            <div class="col">
+                1層の打上がり高さ
+            </div>
+            <div class="col">
+                層数
+            </div>
+        </div>
+
+        @foreach (var itemP7 in Model.P0007)
+        {
+            <div class="row">
+                <div class="col">
+                    <input name="driving_interval" value="@Html.DisplayFor(modelItem => itemP7.driving_interval)" type="number" step="any" class="form-control"/>
+                </div>
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <input name="free_fall_height" value="@Html.DisplayFor(modelItem => itemP7.free_fall_height)" type="number" step="any" class="form-control">
+                        <span class="input-group-text">m</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <input name="lauch_method" value="@Html.DisplayFor(modelItem => itemP7.lauch_method)" type="text"  class="form-control"/>
+                </div>
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <input id="layer_height" name="layer_height" value="@Html.DisplayFor(modelItem => itemP7.layer_height)" type="number" step="any"
+                            onchange="reDrawChart();" class="form-control">
+                        <span class="input-group-text">m</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <input id="layer_number" name="layer_number" value="@Html.DisplayFor(modelItem => itemP7.layer_number)" type="number" step="1" 
+                            onchange="this.value = parseInt(this.value); reDrawChart();" class="form-control"/>
+                </div>
+            </div>
+        }
+
+        
+        
+        <div class="row">
+            <div class="col">
+                バイブ挿入間隔
+            </div>
+            <div class="col">
+                締固め作業高さ
+            </div>
+            <div class="col">
+                締固め時間
+            </div>
+            <div class="col">
+                再振動（後追い）
+            </div>
+            <div class="col">
+                型枠バイブ
+            </div>
+        </div>
+
+        @foreach (var itemP8 in Model.P0008)
+        {
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <input name="insertion_interval" value="@Html.DisplayFor(modelItem => itemP8.insertion_interval)" type="number" step="1" onchange="this.value = parseInt(this.value);" class="form-control">
+                        <span class="input-group-text">m</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <input id="compaction_work_height" name="compaction_work_height" value="@Html.DisplayFor(modelItem => itemP8.compaction_work_height)" type="number" step="any" 
+                        onchange="reDrawChart();" class="form-control">
+                </div>
+                <div class="col">
+                    <input name="compaction_time" value="@Html.DisplayFor(modelItem => itemP8.compaction_time)" type="number" step="1" onchange="this.value = parseInt(this.value);" class="form-control">
+                </div>
+                <div class="col">
+                    <input name="re_vibration_follow_up" value="@Html.DisplayFor(modelItem => itemP8.re_vibration_follow_up)" type="text"  class="form-control"/>
+                </div>
+                <div class="col">
+                    <input name="shuttering_vibration" value="@Html.DisplayFor(modelItem => itemP8.shuttering_vibration)" type="text"  class="form-control"/>
+                </div>
+            </div>
+        }
+
+        
+
+        <div class="row">
+            <div class="col text-center">
+                <img src="https://bizweb.dktcdn.net/100/410/566/articles/3336164d74ed04bbf4a8f6f635833dde.jpg?v=1616729475870" width="500"/>
+                <br />Chart 1
+            </div>
+            <div class="col text-center">
+                <canvas id="myChart" style="width:100%;max-width:600px; max-height:600px" height="600"></canvas>
+                <br />Chart 2
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div> -->
+            <div class="col text-center">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.3.1/dist/chartjs-plugin-annotation.min.js"></script> 
+
+<script>
+    function reDrawChart()
+    {
+        var lh = document.getElementById("layer_height").value;
+        var ln = document.getElementById("layer_number").value;
+        var cwh = document.getElementById("compaction_work_height").value;
+        drawChartDat(4, 0.5, 5.5, lh, ln, 1.9, 2.1, 0.4, 5, 2, cwh);
+    }
+    
+       
+    var myChart = null;
+    var lh = document.getElementById("layer_height").value;
+    var ln = document.getElementById("layer_number").value;
+    var cwh = document.getElementById("compaction_work_height").value;
+    drawChartDat(4, 0.5, 5.5, lh, ln, 1.9, 2.1, 0.4, 5, 2, cwh);
+    function drawChartDat(_maxX, _stepX, _maxY, _stepY, _numStepBorder, _xL1, _xL2, _yMinL1_2, _yMaxL1_2, _xL3, _yL4)
+    {
+        //=====================Input Data========================
+            //+++++++++++Draw 2 Axis+++++++++++++++
+        const minY = 0;
+        const stepY = _stepY;       //
+        const maxY = _maxY;         //
+
+        const minX = 0;
+        const stepX = _stepX;       //
+        const maxX = _maxX;         //
+
+            //+++++++++++Draw Rectangle++++++++++++
+        const numOfStepBorder = _numStepBorder;  //
+
+            //+++++++++++Draw Line+++++++++++++++++
+                //-------Line 1 & 2----------
+        const xL1 = _xL1;           //
+        const xL2 = _xL2;           //
+        const yMinL1_2 = _yMinL1_2;     //
+        const yMaxL1_2 = _yMaxL1_2;     //
+        const colorL1_2 = 'rgba(200,0,0,1)';
+
+
+                //-------Line 3 (Arrow)------
+        const xL3 = _xL3;               //
+        const yMinL3 = minY;
+        const yMaxL3 = yMinL1_2;
+        const colorL3 = 'green';
+
+                //-------Line 4 (Max)--------
+        const yL4 = _yL4;               //
+        const colorL4 = 'rgba(200,0,0,1)';
+
+
+        //=======================Config===========================
+
+        const MuiTen = 
+        {
+            display: true,
+            type: 'line',
+            borderColor: colorL3,
+            borderWidth: 3,
+            arrowHeads: 
+            {
+                start: 
+                {
+                    enabled: true,
+                    borderColor: colorL3
+                },
+                end: 
+                {
+                    enabled: true,
+                    borderColor: colorL3
+                }
+            },
+            xMin: xL3,
+            xMax: xL3,
+            xScaleID: 'x',
+            yMin: yMinL3,
+            yMax: yMaxL3,
+            yScaleID: 'y'
+        };
+
+
+
+        const chartAreaBorder = 
+        {
+            id: 'chartAreaBorder',
+            beforeDraw(chart, args, options) 
+            {
+                const {ctx, chartArea: {left, top, width, height}} = chart;
+                ctx.save();
+                const heightOfBorder = height / (maxY / stepY) * numOfStepBorder;
+                ctx.strokeStyle = options.borderColor;
+                ctx.lineWidth = options.borderWidth;
+                ctx.setLineDash(options.borderDash || []);
+                ctx.lineDashOffset = options.borderDashOffset;
+                ctx.strokeRect(left, top - heightOfBorder + height, width, heightOfBorder);
+                ctx.restore();
+            }
+        };
+
+        const data = {
+            datasets: [
+                {
+                    label: 'Line 1',
+                    showLine: true,
+                    data: [{x: xL1, y: yMinL1_2}, {x: xL1, y: yMaxL1_2}],
+                    backgroundColor: colorL1_2,
+                    borderColor: colorL1_2,
+                    borderWidth: 5
+                },
+                {
+                    label: 'Line 2',
+                    showLine: true,
+                    data: [{x: xL2, y: yMinL1_2}, {x: xL2, y: yMaxL1_2}],
+                    backgroundColor: colorL1_2,
+                    borderColor: colorL1_2,
+                    borderWidth: 5
+
+                },
+                {
+                    label: 'Line 3',
+                    showLine: false,
+                    data: [{x: xL3, y: yMinL3}, {x: xL3, y: yMaxL3}],
+                    borderWidth: 5,
+                    backgroundColor: colorL3,
+                    borderColor: colorL3,
+                    borderDash: [8,8],
+                },
+                {
+                    label: 'Line 4',
+                    showLine: true,
+                    data: [{x: minX, y: yL4}, {x: maxX, y: yL4}],
+                    backgroundColor: colorL4,
+                    borderColor: colorL4,
+                    borderWidth: 5,
+
+                }
+            ]
+        };
+
+
+        const config = {
+            type: 'scatter',
+            data: data,
+            options: 
+            {
+                scales: 
+                {
+                    x: 
+                    {
+                        type: 'linear',
+                        position: 'bottom',
+                        min: minX,
+                        max: maxX,
+                        grid:
+                        {
+                            display: false
+                        },
+                        ticks:
+                        {
+                            stepSize: stepX
+                        },
+                        title:
+                        {
+                            display: true,
+                            text: "truc x (m)"
+                        }
+                    },
+                    y: 
+                    {
+                        type: 'linear',
+                        position: 'left',
+                        min: minY,
+                        max: maxY,
+                        grid:
+                        {
+                            borderDash: [2,2],
+                            color: "blue"
+                        },
+                        ticks:
+                        {
+                            stepSize: stepY
+                        },
+                        title:
+                        {
+                            display: true,
+                            text: "truc y (m)"
+                        }
+                    }
+                },
+                plugins:
+                {
+                    legend:
+                    {
+                        labels: 
+                        {
+                            filter: function(legendItem, chartData)
+                            {
+                                if (legendItem.datasetIndex === 0 || legendItem.datasetIndex === 3) 
+                                {
+                                    return false;
+                                }
+                            return true;
+                            },
+                            usePointStyle: true
+                        },
+
+                        onClick(e, legendItem, legend) 
+                        {
+                            const index = legendItem.datasetIndex;
+                            const ci = legend.chart;
+                            if (index == 1)
+                            {
+
+                                if (ci.isDatasetVisible(index)) 
+                                {
+                                    ci.getDatasetMeta(index-1).hidden = true;
+                                    ci.getDatasetMeta(index).hidden = true;
+                                    ci.update();
+                                } 
+                                else 
+                                {
+                                    ci.getDatasetMeta(index-1).hidden = null;
+                                    ci.getDatasetMeta(index).hidden = null;
+                                    ci.update();
+                                }
+                            }
+                            else if (index == 2)
+                            {
+                                if (ci.isDatasetVisible(index)) 
+                                {
+                                    ci.getDatasetMeta(index).hidden = true;
+                                    ci.options.plugins.annotation.annotations.MuiTen.display = false;
+                                    ci.update();
+                                } 
+                                else 
+                                {
+                                    ci.getDatasetMeta(index).hidden = null;
+                                    ci.options.plugins.annotation.annotations.MuiTen.display = true;
+                                    ci.update();
+                                }
+                            }
+                        }
+                    },
+
+                    chartAreaBorder:
+                    {
+                        borderColor: "black",
+                        borderWidth: 2,
+                        borderDashOffset: 2,
+                    },
+
+                    annotation:
+                    {
+                        drawTime: "afterDraw",
+                        annotations:
+                        {
+                            MuiTen
+                        }
+                    }
+                },
+
+                elements:
+                {
+                    point:
+                    {
+                        pointStyle: 'line',
+                        radius: 0
+                    }
+                }
+            },
+            plugins: [chartAreaBorder]
+        };
+
+        if(myChart != null) //De khi goi lai ham ve bieu do nay thi se tu dong xoa bieu do truoc do (neu co) de tranh xay ra loi
+        {
+            myChart.destroy();
+        }
+
+        myChart = new Chart( //Neu khong su dung cau lenh if tren thi bien nay phai khai bao var hoac const (khong can khai bao ben ngoai nua)
+            document.getElementById('myChart'),
+            config
+        );
+    }
+
+    
+</script>

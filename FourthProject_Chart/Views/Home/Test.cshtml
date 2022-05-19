@@ -1,0 +1,284 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "Test Page";
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!--Add Annotation plugin-->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.3.1/dist/chartjs-plugin-annotation.min.js"></script> 
+
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+    //=====================Input Data========================
+        //+++++++++++Draw 2 Axis+++++++++++++++
+    const minY = 0;
+    const stepY = 0.5;
+    const maxY = 5.5;
+
+    const minX = 0;
+    const stepX = 0.5;
+    const maxX = 4;
+        //+++++++++++Draw Rectangle++++++++++++
+    const numOfStepBorder = 7;
+        //+++++++++++Draw Line+++++++++++++++++
+            //-------Line 1--------------
+    const x1L1 = 1.9;
+    const y1L1 = 0.4;
+    const x2L1 = 1.9;
+    const y2L1 = 4;
+
+            //-------Line 2--------------
+    const x1L2 = 2.1;
+    const y1L2 = 0.4;
+    const x2L2 = 2.1;
+    const y2L2 = 4;
+
+            //-------Line 3 (Arrow)------
+    const x1L3 = 2;
+    const y1L3 = 0;
+    const x2L3 = 2;
+    const y2L3 = 0.4;
+
+            //-------Line 4 (Max)--------
+    const yL4 = 4;
+
+
+    //=======================Config===========================
+
+    const MuiTen = 
+    {
+        display: true,
+        type: 'line',
+        borderColor: 'green',
+        borderWidth: 3,
+        //borderDash: [5,5],
+        arrowHeads: {
+            start: {
+                enabled: true,
+                borderColor: 'green'
+            },
+            end: {
+                enabled: true,
+                borderColor: 'green'
+            }
+        },
+        xMax: x2L3,
+        xMin: x1L3,
+        xScaleID: 'x',
+        yMax: y2L3,
+        yMin: y1L3,
+        yScaleID: 'y'
+    };
+
+
+
+    const chartAreaBorder = 
+    {
+        id: 'chartAreaBorder',
+        beforeDraw(chart, args, options) 
+        {
+            const {ctx, chartArea: {left, top, width, height}} = chart;
+            ctx.save();
+
+            const heightOfBorder = height / (maxY / stepY) * numOfStepBorder;
+
+            ctx.strokeStyle = options.borderColor;
+            ctx.lineWidth = options.borderWidth;
+            ctx.setLineDash(options.borderDash || []);
+            ctx.lineDashOffset = options.borderDashOffset;
+            ctx.strokeRect(left, top - heightOfBorder + height, width, heightOfBorder);
+            ctx.restore();
+        }
+    };
+
+    const data = {
+        datasets: [
+            {
+                label: 'Line 1',
+                showLine: true,
+                data: [{x: x1L1, y: y1L1}, {x: x2L1, y: y2L1}],
+                backgroundColor: 'rgb(200, 0, 0)',
+                borderColor: 'rgba(200, 0, 0, 1)'
+            },
+            {
+                label: 'Line 2',
+                showLine: true,
+                data: [{x: x1L2, y: y1L2}, {x: x1L2, y: y2L2}],
+                backgroundColor: 'rgb(200, 0, 0)',
+                borderColor: 'rgba(200, 0, 0, 1)'
+            },
+            {
+                label: 'Line 3',
+                showLine: true,
+                data: [{x: x1L3, y: y1L3}, {x: x2L3, y: y2L3}],
+                backgroundColor: 'rgb(0, 200, 200)',
+                borderColor: 'rgba(0, 200, 200, 1)',
+                borderDash: [8,8],
+                //borderWidth: 5
+            },
+            {
+                label: 'Line 4',
+                showLine: true,
+                data: [{x: minX, y: yL4}, {x: maxX, y: yL4}],
+                backgroundColor: 'rgb(200, 0, 0)',
+                borderColor: 'rgba(200, 0, 0, 1)',
+            }
+            ],
+    };
+
+
+    const config = {
+        type: 'scatter',
+        data: data,
+        options: 
+        {
+            scales: 
+            {
+                x: 
+                {
+                    type: 'linear',
+                    position: 'bottom',
+                    min: minX,
+                    max: maxX,
+                    grid:
+                    {
+                        display: false
+                    },
+                    ticks:
+                    {
+                        stepSize: stepX
+                    },
+                    title:
+                    {
+                        display: true,
+                        text: "truc x (m)"
+                    }
+                },
+                y: 
+                {
+                    type: 'linear',
+                    position: 'left',
+                    min: minY,
+                    max: maxY,
+                    grid:
+                    {
+                        borderDash: [2,2],
+                        color: "blue"
+                    },
+                    ticks:
+                    {
+                        stepSize: stepY
+                    },
+                    title:
+                    {
+                        display: true,
+                        text: "truc y (m)"
+                    }
+                }
+            },
+            plugins:
+            {
+                legend:
+                {
+                    labels: 
+                    {
+                        filter: function(legendItem, chartData)  // hidden first legend and fourth legend
+                        {
+                            if (legendItem.datasetIndex === 0 || legendItem.datasetIndex === 3) 
+                            {
+                                return false;
+                            }
+                        return true;
+                        },
+                        usePointStyle: true
+                    },
+
+                    onClick(e, legendItem, legend) {
+                        const index = legendItem.datasetIndex;
+                        const ci = legend.chart;
+                        if (index == 1)
+                        {
+
+                            if (ci.isDatasetVisible(index)) 
+                            {
+                                //ci.hide(index-1);
+                                //ci.hide(index);
+                                ci.getDatasetMeta(index-1).hidden = true;
+                                ci.getDatasetMeta(index).hidden = true;
+                                //legendItem.hidden = true;
+                                ci.update();
+                            } else {
+                                //ci.show(index);
+                                //ci.show(index-1);
+                                ci.getDatasetMeta(index-1).hidden = null;
+                                ci.getDatasetMeta(index).hidden = null;
+                                //legendItem.hidden = false;
+                                ci.update();
+                            }
+                        }
+                        else if (index == 2)
+                        {
+                            if (ci.isDatasetVisible(index)) 
+                            {
+                                ci.getDatasetMeta(index).hidden = true;
+                                //ci.options.plugins.annotation.drawTime = null; //hide all annotations
+                                //alert(legend.chart.options.plugins.annotation.annotations.annotation1.display);
+                                ci.options.plugins.annotation.annotations.MuiTen.display = false; //hide an annotation
+                                ci.update();
+
+                                //ci.hide(index);
+                                //legendItem.hidden = true;
+                            } 
+                            else 
+                            {
+                                ci.getDatasetMeta(index).hidden = null;
+                                ci.options.plugins.annotation.annotations.MuiTen.display = true;
+                                ci.update();
+
+                                //ci.show(index);
+                                //legendItem.hidden = false;
+                            }
+                        }
+                    }
+                },
+
+                chartAreaBorder:
+                {
+                    borderColor: "black",
+                    borderWidth: 2,
+                    borderDashOffset: 2,
+                    //borderDash: [5,5]
+                },
+
+                annotation:
+                {
+                    drawTime: "afterDraw",
+                    annotations:
+                    {
+                        MuiTen
+                    }
+                }
+            },
+
+            elements:
+            {
+                point:
+                {
+                    pointStyle: 'line',
+                    radius: 0
+                }
+            }
+        },
+        plugins: [chartAreaBorder]
+    };
+
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+</script>

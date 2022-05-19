@@ -1,0 +1,283 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "Final Page";
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!--Add Annotation plugin-->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.3.1/dist/chartjs-plugin-annotation.min.js"></script> 
+
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+    drawChartDat(4, 0.5, 5.5, 0.5, 7, 1.9, 2.1, 0.4, 5, 2, 4);
+
+    function drawChartDat(_maxX, _stepX, _maxY, _stepY, _numStepBorder, _xL1, _xL2, _yMinL1_2, _yMaxL1_2, _xL3, _yL4)
+    {
+        //=====================Input Data========================
+            //+++++++++++Draw 2 Axis+++++++++++++++
+        const minY = 0;
+        const stepY = _stepY;       //
+        const maxY = _maxY;         //
+
+        const minX = 0;
+        const stepX = _stepX;       //
+        const maxX = _maxX;         //
+
+            //+++++++++++Draw Rectangle++++++++++++
+        const numOfStepBorder = _numStepBorder;  //
+
+            //+++++++++++Draw Line+++++++++++++++++
+                //-------Line 1 & 2----------
+        const xL1 = _xL1;           //
+        const xL2 = _xL2;           //
+        const yMinL1_2 = _yMinL1_2;     //
+        const yMaxL1_2 = _yMaxL1_2;     //
+        const colorL1_2 = 'rgba(200,0,0,1)';
+
+
+                //-------Line 3 (Arrow)------
+        const xL3 = _xL3;               //
+        const yMinL3 = minY;
+        const yMaxL3 = yMinL1_2;
+        const colorL3 = 'green';
+
+                //-------Line 4 (Max)--------
+        const yL4 = _yL4;               //
+        const colorL4 = 'rgba(200,0,0,1)';
+
+
+        //=======================Config===========================
+
+        const MuiTen = 
+        {
+            display: true,
+            type: 'line',
+            borderColor: colorL3,
+            borderWidth: 3,
+            arrowHeads: 
+            {
+                start: 
+                {
+                    enabled: true,
+                    borderColor: colorL3
+                },
+                end: 
+                {
+                    enabled: true,
+                    borderColor: colorL3
+                }
+            },
+            xMin: xL3,
+            xMax: xL3,
+            xScaleID: 'x',
+            yMin: yMinL3,
+            yMax: yMaxL3,
+            yScaleID: 'y'
+        };
+
+
+
+        const chartAreaBorder = 
+        {
+            id: 'chartAreaBorder',
+            beforeDraw(chart, args, options) 
+            {
+                const {ctx, chartArea: {left, top, width, height}} = chart;
+                ctx.save();
+                const heightOfBorder = height / (maxY / stepY) * numOfStepBorder;
+                ctx.strokeStyle = options.borderColor;
+                ctx.lineWidth = options.borderWidth;
+                ctx.setLineDash(options.borderDash || []);
+                ctx.lineDashOffset = options.borderDashOffset;
+                ctx.strokeRect(left, top - heightOfBorder + height, width, heightOfBorder);
+                ctx.restore();
+            }
+        };
+
+        const data = {
+            datasets: [
+                {
+                    label: 'Line 1',
+                    showLine: true,
+                    data: [{x: xL1, y: yMinL1_2}, {x: xL1, y: yMaxL1_2}],
+                    backgroundColor: colorL1_2,
+                    borderColor: colorL1_2,
+                    borderWidth: 5
+                },
+                {
+                    label: 'Line 2',
+                    showLine: true,
+                    data: [{x: xL2, y: yMinL1_2}, {x: xL2, y: yMaxL1_2}],
+                    backgroundColor: colorL1_2,
+                    borderColor: colorL1_2,
+                    borderWidth: 5
+
+                },
+                {
+                    label: 'Line 3',
+                    showLine: false,
+                    data: [{x: xL3, y: yMinL3}, {x: xL3, y: yMaxL3}],
+                    borderWidth: 5,
+                    backgroundColor: colorL3,
+                    borderColor: colorL3,
+                    borderDash: [8,8],
+                },
+                {
+                    label: 'Line 4',
+                    showLine: true,
+                    data: [{x: minX, y: yL4}, {x: maxX, y: yL4}],
+                    backgroundColor: colorL4,
+                    borderColor: colorL4,
+                    borderWidth: 5,
+
+                }
+            ]
+        };
+
+
+        const config = {
+            type: 'scatter',
+            data: data,
+            options: 
+            {
+                scales: 
+                {
+                    x: 
+                    {
+                        type: 'linear',
+                        position: 'bottom',
+                        min: minX,
+                        max: maxX,
+                        grid:
+                        {
+                            display: false
+                        },
+                        ticks:
+                        {
+                            stepSize: stepX
+                        },
+                        title:
+                        {
+                            display: true,
+                            text: "truc x (m)"
+                        }
+                    },
+                    y: 
+                    {
+                        type: 'linear',
+                        position: 'left',
+                        min: minY,
+                        max: maxY,
+                        grid:
+                        {
+                            borderDash: [2,2],
+                            color: "blue"
+                        },
+                        ticks:
+                        {
+                            stepSize: stepY
+                        },
+                        title:
+                        {
+                            display: true,
+                            text: "truc y (m)"
+                        }
+                    }
+                },
+                plugins:
+                {
+                    legend:
+                    {
+                        labels: 
+                        {
+                            filter: function(legendItem, chartData)
+                            {
+                                if (legendItem.datasetIndex === 0 || legendItem.datasetIndex === 3) 
+                                {
+                                    return false;
+                                }
+                            return true;
+                            },
+                            usePointStyle: true
+                        },
+
+                        onClick(e, legendItem, legend) 
+                        {
+                            const index = legendItem.datasetIndex;
+                            const ci = legend.chart;
+                            if (index == 1)
+                            {
+
+                                if (ci.isDatasetVisible(index)) 
+                                {
+                                    ci.getDatasetMeta(index-1).hidden = true;
+                                    ci.getDatasetMeta(index).hidden = true;
+                                    ci.update();
+                                } 
+                                else 
+                                {
+                                    ci.getDatasetMeta(index-1).hidden = null;
+                                    ci.getDatasetMeta(index).hidden = null;
+                                    ci.update();
+                                }
+                            }
+                            else if (index == 2)
+                            {
+                                if (ci.isDatasetVisible(index)) 
+                                {
+                                    ci.getDatasetMeta(index).hidden = true;
+                                    ci.options.plugins.annotation.annotations.MuiTen.display = false;
+                                    ci.update();
+                                } 
+                                else 
+                                {
+                                    ci.getDatasetMeta(index).hidden = null;
+                                    ci.options.plugins.annotation.annotations.MuiTen.display = true;
+                                    ci.update();
+                                }
+                            }
+                        }
+                    },
+
+                    chartAreaBorder:
+                    {
+                        borderColor: "black",
+                        borderWidth: 2,
+                        borderDashOffset: 2,
+                    },
+
+                    annotation:
+                    {
+                        drawTime: "afterDraw",
+                        annotations:
+                        {
+                            MuiTen
+                        }
+                    }
+                },
+
+                elements:
+                {
+                    point:
+                    {
+                        pointStyle: 'line',
+                        radius: 0
+                    }
+                }
+            },
+            plugins: [chartAreaBorder]
+        };
+
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    }
+
+    
+</script>
